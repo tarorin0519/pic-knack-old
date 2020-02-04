@@ -1,0 +1,7 @@
+<%= attachment_image_tag @post, :image %>
+<%= @post.user.name %>
+<%= @post.title%>
+<%= @post.body %>
+<%= @post.genre %>
+
+<%= link_to "編集", edit_post_path(@post), %>

@@ -1,0 +1,18 @@
+<span>写真を投稿する</span>
+
+<%= form_for @post do |f| %>
+
+	<%= f.attachment_field :image %>
+
+	<label>タイトル</label>
+	<%= f.text_field :title %>
+
+	<label>コメント</label>
+	<%= f.text_area :body %>
+
+	<label>ジャンル</label>
+	<%= f.select :genre_id, Genre.all.collect{|g|[g.name, g.id]}, {prompt: '選択してください'} %>
+
+	<%= f.submit "投稿する" %>
+
+<% end %>
