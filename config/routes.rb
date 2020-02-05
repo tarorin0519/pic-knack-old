@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#top'
+  root 'home#top'
   get '/about' => "home#about"
 
   devise_for :admins, controllers:{
@@ -29,6 +29,14 @@ Rails.application.routes.draw do
   namespace :admins do
   	resources :posts
   end
+
+  resources :users do
+  	member do
+  	  get :following, :followers
+  	end
+  end
+
+  resources :relationships, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
